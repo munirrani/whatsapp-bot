@@ -1,0 +1,32 @@
+# docker-compose.yml
+version: "3.8" # Use a recent version
+
+services:
+  baileys-app:
+    build:
+      context: .
+      dockerfile: Dockerfile # Specify the Dockerfile name
+    container_name: baileys_whatsapp_service # A friendly name for your container
+    ports:
+      - "8016:8016" # Map HTTP port (host:container)
+    volumes:
+      - ./auth_data:/app/auth_info_baileys # Persist WhatsApp session data
+      - ./media_data:/app/media # Persist media (if needed)
+    env_file:
+      - .env
+    depends_on:
+      - db
+    restart: always
+
+  db:
+    image: postgres:13
+    container_name: postgres_db
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    restart: always

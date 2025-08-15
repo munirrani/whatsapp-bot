@@ -1,0 +1,13 @@
+node_modules/
+dist/
+auth_data/
+media_data/
+postgres_data/
+prototypes/
+.env
+.DS_Store
+package-lock.json
+.claude/
+*.txt
+server*
+CLAUDE.md

@@ -1,0 +1,28 @@
+# .dockerignore
+
+# Ignore node_modules from host, we'll install fresh in the container
+node_modules
+prototypes
+
+# Ignore persistent data directories (these will be mounted as volumes) 
+auth_data
+media_data
+postgres_data
+
+# Ignore potentially sensitive files if not needed in image
+# server.key
+# server.crt
+# server.cnf
+ *.log
+ .env
+
+# Ignore Docker/Git specific files
+.git
+.gitignore
+Dockerfile
+docker-compose.yml
+.dockerignore
+.claude
+
+# Ignore claude chat history
+*.txt
