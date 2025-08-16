@@ -90,7 +90,7 @@ The application provides the following HTTP endpoints to interact with WhatsApp.
     }
     ```
 -   **Details**:
-    -   `selectedRecipientGroup`: An array of numbers corresponding to the recipient groups returned by the `GET /list` endpoint. The status will be broadcast to the JIDs (phone numbers) in these groups.
+    -   `selectedRecipientGroup`: An array of numbers corresponding to the recipient groups returned by the `GET /list` endpoint. The status will be broadcast to the JIDs (phone numbers) in these groups. Alternatively, you can provide an array of JID strings (e.g., `["1234567890@s.whatsapp.net"]`) to send the status to a specific list of recipients.
     -   `backgroundColor`: (Optional) The background color for the text status.
     -   `fontNumber`: (Optional) The font to use for the text status.
 
@@ -99,7 +99,7 @@ The application provides the following HTTP endpoints to interact with WhatsApp.
 -   **Endpoint**: `POST /media`
 -   **Description**: Sends a media file (image, video, audio) as a WhatsApp status. This is a multipart/form-data request.
 -   **Form Fields**:
-    -   `selectedRecipientGroup`: A JSON stringified array of numbers (e.g., `"[1, 2]"`) corresponding to the recipient groups from `GET /list`.
+    -   `selectedRecipientGroup`: A JSON stringified array of numbers (e.g., `"[1, 2]"`) corresponding to the recipient groups from `GET /list`. Alternatively, you can provide a JSON stringified array of JID strings (e.g., `"[\"1234567890@s.whatsapp.net\"]"`) to send the status to a specific list of recipients.
     -   `caption`: (Optional) The caption for the media.
     -   `file`: The media file to upload.
     -   `backgroundColor`: (Optional) The background color for the status.
